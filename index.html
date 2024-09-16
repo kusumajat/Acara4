@@ -22,7 +22,7 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
         // Inisialisasi peta
-        var map = L.map("map").setView([-6.1685332, 106.7266846], 13);
+        var map = L.map("map").setView([-7.5412015, 110.4469299], 13);
 
         // Tile Layer Base Map
         var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -44,42 +44,73 @@
 
         //---------------------------------------------------------------------------------
         // Marker
-        var marker = L.marker([-7.5412015, 110.4469299]);
+        var marker = L.marker([-7.5412793, 110.4462004]);
 
         // Menambahkan marker ke dalam peta
         marker.addTo(map);
 
         // Popup
-        marker.bindPopup("<b>P</b><br>");
+        marker.bindPopup("<b>Pusat Letusan Gunung Merapi</b><br>");
 
         // Tooltip
-        marker.bindTooltip("Ini adalah tooltip");
+        marker.bindTooltip("Puncak Gunung Merapi");
 
         //---------------------------------------------------------------------------------
         // Circle
-        var circle = L.circle([-7.5412015, 110.4469299], {
+        var circle3 = L.circle([-7.5412793, 110.4462004], {
+            color: "yellow", // warna garis
+            opacity: 1, // opacity garis
+            fillColor: "#ff9f05", // warna fill
+            fillOpacity: 0.5, // opacity fill
+            radius: 20000, // radius dalam meter
+        });
+
+        // Menambahkan circle ke dalam peta
+        circle3.addTo(map);
+
+        var circle2 = L.circle([-7.5412793, 110.4462004], {
+            color: "orange", // warna garis
+            opacity: 1, // opacity garis
+            fillColor: "#ff5112", // warna fill
+            fillOpacity: 0.5, // opacity fill
+            radius: 10000, // radius dalam meter
+        });
+
+        // Menambahkan circle ke dalam peta
+        circle2.addTo(map);
+
+        var circle = L.circle([-7.5412793, 110.4462004], {
             color: "red", // warna garis
             opacity: 1, // opacity garis
             fillColor: "#f03", // warna fill
             fillOpacity: 0.5, // opacity fill
-            radius: 10000, // radius dalam meter
+            radius: 5000, // radius dalam meter
         });
 
         // Menambahkan circle ke dalam peta
         circle.addTo(map);
 
         // Popup
-        circle.bindPopup("<b>Hallo</b><br>Ini adalah popup");
-
-        // Tooltip
-        circle.bindTooltip("Ini adalah tooltip");
+        circle.bindPopup("<b>Sangat Bahya</b><br>Radius 5.000 meter");
+        circle2.bindPopup("<b>Bahaya</b><br>Radius 10.000 meter");
+        circle3.bindPopup("<b>Rawan</b><br>Radius 20.000 meter");
 
         //---------------------------------------------------------------------------------
         // Polyline
         var vertexPolyline = [
-            [-7.5214388, 110.2780151],
-            [-7.7099076, 110.3961182],
-            [-7.7911116, 110.4709625],
+            [-7.593051195625641, 110.4316070132971],
+            [-7.597500605495284, 110.42622861513799],
+            [-7.599795969532544, 110.42954258299903],
+            [-7.625890031247135, 110.42398913878942],
+            [-7.636666724074728, 110.42616222925822],
+            [-7.654143705113442, 110.42254041457339],
+            [-7.656080573498387, 110.42423059558857],
+            [-7.666138617729915, 110.41819422741841],
+            [-7.677871483660319, 110.4169869579292],
+            [-7.682186148453354, 110.41964295577921],
+            [-7.695354240512215, 110.4186771399806],
+            [-7.757091478469961, 110.38221749073985],
+            [-7.776381125265576, 110.37490982138374],
         ];
         var polyline = L.polyline(vertexPolyline, {
             color: "blue", // warna garis
@@ -91,21 +122,36 @@
         polyline.addTo(map);
 
         // Popup
-        polyline.bindPopup("<b>Hallo</b><br>Ini adalah popup");
+        polyline.bindPopup("<b>Hallo</b><br>Jalur Evakuasi");
 
         // Tooltip
-        polyline.bindTooltip("Ini adalah tooltip");
+        polyline.bindTooltip("Jalur Evakuasi");
 
 
         //---------------------------------------------------------------------------------
         // Polygon
         var vertexPolygon = [
-            [-7.7795496, 110.3473663],
-            [-7.8111744, 110.3518295],
-            [-7.8135547, 110.3957748],
-            [-7.7805698, 110.4016113],
-            [-7.7492827, 110.3854752]
-        ];
+            [-7.898617246902434, 110.02834471130554],
+            [-7.9881782700563395, 110.21045825481912],
+            [-8.028306427295846, 110.34100469271922],
+            [-8.071795875538148, 110.36958901305536],
+            [-8.191928069852947, 110.71190303038402],
+            [-8.208532346095653,110.8283316136983],
+            [-8.139566066415826,110.8164796179892],
+            [-8.158976172539656,110.78580383411763],
+            [-8.06929358596935,110.7781348851578],
+            [-8.02796124450644,110.75443094161099],
+            [-7.818085828823857,110.78580395379605],
+            [-7.798789056358213,110.59408022979959],
+            [-7.761531161458389,110.48880647372013],
+            [-7.5446107780269545,110.44209561148672],
+            [-7.648312701092785,110.30614613137486],
+            [-7.705012006616317,110.27337880617691],
+            [-7.642914273459286,110.25804095612855],
+            [-7.649867201774546,110.12209147601669],
+            [-7.7452539520895884,110.13394350762931],
+            [-7.818517313870085,110.06213426915777],
+            ];
         var polygon = L.polygon(vertexPolygon, {
             color: "purple", // warna garis
             weight: 3, // ketebalan garis
@@ -118,11 +164,11 @@
         //polygon.addTo(map);
 
         // Popup
-        polygon.bindPopup("<b>Hallo</b><br>Ini adalah popup");
+        polygon.bindPopup("<b>Hallo</b><br>Wilayah DIY");
         polygon.openPopup();
 
         // Tooltip
-        polygon.bindTooltip("Ini adalah tooltip");
+        polygon.bindTooltip("Wilayah DIY");
         polygon.openTooltip();
 
         //---------------------------------------------------------------------------------
@@ -131,7 +177,7 @@
         // Image Overlay
         var imageUrl = 'data/hillshade_jakarta.png';
         var imageExtent = [[-6.25, 106.75], [-6.0, 107.0]];
-        var imageOverlay = L.imageOverlay(imageUrl, imageExtent, {opacity: 0.7});
+        var imageOverlay = L.imageOverlay(imageUrl, imageExtent, { opacity: 0.7 });
 
         // Menambahkan image overlay ke dalam peta
         imageOverlay.addTo(map);
